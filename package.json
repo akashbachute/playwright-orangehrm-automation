@@ -1,0 +1,26 @@
+{
+  "name": "playwright-orangehrm-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+  "allure:report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akashbachute/playwright-orangehrm-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akashbachute/playwright-orangehrm-automation/issues"
+  },
+  "homepage": "https://github.com/akashbachute/playwright-orangehrm-automation#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.1",
+    "allure-playwright": "^3.4.1"
+  }
+}
