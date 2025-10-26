@@ -8,6 +8,9 @@ constructor(page){
     this.password =page.getByPlaceholder('Password');
     this.loginButton=page.getByRole('button', { name: 'Login' });
     this.dashboardHeading = page.getByRole('heading', { name: 'Dashboard' }); 
+    this.invalidCredential = page.getByText('Invalid credentials');
+    this.brandingImage = page.getByAltText('company-branding');
+
 
 }
 
@@ -29,7 +32,13 @@ async verifySuccessfulLogin()
 return await this.dashboardHeading.isVisible();
 } 
 
+async brandingImageIsVisible(){
+    return await this.brandingImage.isVisible();
+}
 
+async verifyInvalidLogin(){
+    return await this.invalidCredential.isVisible();
+}
 
 };
 module.exports=LoginPage;
