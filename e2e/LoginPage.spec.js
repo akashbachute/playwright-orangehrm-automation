@@ -12,13 +12,11 @@ test('Verify that user is able to login with valid credentials',async({page})=>{
       await loginPage.waitForPageLoad();
     const isLoginSuccessful=await loginPage.verifySuccessfulLogin();
     expect(isLoginSuccessful).toBeTruthy();
-      await page.context().storageState({ path: 'storageState.json' });
-
 
 })
 
 test('Verify that user is not able to login with invalid credentials',async({page})=>{
-  const pageManager=new PageManager(page);
+    const pageManager=new PageManager(page);
   const loginPage=pageManager.getLoginPage();
   await loginPage.openUrl();
   await loginPage.loginToApplication('invalidUser','invalidPass');
