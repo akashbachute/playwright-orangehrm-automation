@@ -1,9 +1,8 @@
 const { test, expect } = require('@playwright/test');
 const PageManager = require('../pages/PageManager');
+test.use({ storageState: 'storageState.json' });
 
-test('Dashboard test using saved session', async ({ browser }) => {
-  const context = await browser.newContext({ storageState: 'storageState.json' });
-  const page = await context.newPage();
+test('Dashboard test using saved session', async ({ page }) => {
   const pageManager = new PageManager(page);
   const dashboardPage = pageManager.getDashboardPage();
 

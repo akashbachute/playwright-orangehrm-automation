@@ -1,7 +1,7 @@
 const { chromium } = require('@playwright/test');
 const users = require('./test-data/users.json');
 
-module.exports = async () => {
+async function globalSession() {
   const browser = await chromium.launch();
   const page = await browser.newPage();
 
@@ -13,11 +13,14 @@ module.exports = async () => {
   await page.getByPlaceholder('Password').fill(users.password);
   await page.getByRole('button', { name: 'Login' }).click();
 
-  // Wait until Dashboard loads
+  // ✅ Wait for dashboard to load
   await page.waitForURL('**/dashboard/**');
+  await page.waitForSelector('.oxd-topbar-header-breadcrumb'); // header visible
 
-  // ✅ Save session
+  // ✅ Save session state
   await page.context().storageState({ path: 'storageState.json' });
 
   await browser.close();
 };
+
+module.exports = globalSession;
